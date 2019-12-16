@@ -16,9 +16,7 @@ exports.up = function(knex) {
       .unique();
     column.string("password").notNullable();
     column.string("mobile_number");
-    column.boolean("super_user").notNullable();
-    column.boolean("org_user").notNullable();
-    column.boolean("org_admin").notNullable();
+    column.string("role").notNullable();
   });
 };
 

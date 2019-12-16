@@ -13,9 +13,7 @@ exports.seed = function (knex) {
 				email_address: 'email1@email.com',
 				password: bcrypt.hashSync('password', 2),
 				mobile_number: '1-888-888-8888',
-				super_user: true,
-				org_user: false,
-				org_admin: false
+				role: "sAdmin"
 			},
 			// id 2
 			{
@@ -25,9 +23,7 @@ exports.seed = function (knex) {
 				email_address: 'email2@email.com',
 				password: bcrypt.hashSync('hi', 2),
 				mobile_number: '1-888-888-8888',
-				super_user: true,
-				org_user: false,
-				org_admin: false
+				role:"oAdmin"
 			},
 			// id 3
 			{
@@ -37,9 +33,7 @@ exports.seed = function (knex) {
 				email_address: 'pizza@email.com',
 				password: bcrypt.hashSync('hiya', 2),
 				mobile_number: '1-888-888-8888',
-				super_user: true,
-				org_user: false,
-				org_admin: false
+				role:"oUser"
 			}
 		]);
 	});
