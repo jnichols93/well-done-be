@@ -3,6 +3,15 @@ exports.up = function(knex) {
     column.increments();
     column.string("org_name");
     column.string("headquarter_city");
+    column.integer("org_admin")
+    .unsigned()
+    .notNullable()
+    .references("id")
+    .inTable("accounts")
+    .onDelete("CASCADE")
+    .onUpdate("CASCADE");
+    column.string("org_users");
+    column.string("pumps_owned");
   });
 };
 
