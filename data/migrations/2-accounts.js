@@ -8,17 +8,24 @@ exports.up = function(knex) {
       .inTable("organizations")
       .onDelete("RESTRICT")
       .onUpdate("RESTRICT");
-    column.string("first_name").notNullable();
-    column.string("last_name").notNullable();
+    column
+    .string("first_name").notNullable();
+    column
+    .string("last_name").notNullable();
     column
       .string("email_address")
       .notNullable()
       .unique();
-    column.string("password").notNullable();
-    column.string("mobile_number");
-    column.boolean("super_user").notNullable();
-    column.boolean("org_user").notNullable();
-    column.boolean("org_admin").notNullable();
+    column
+    .string("password").notNullable();
+    column
+    .string("mobile_number");
+    column
+    .boolean("super_user").notNullable();
+    column
+    .boolean("org_user").notNullable();
+    column
+    .boolean("org_admin").notNullable();
   });
 };
 

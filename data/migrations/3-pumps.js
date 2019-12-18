@@ -1,11 +1,10 @@
 exports.up = function(knex) {
   return knex.schema.createTable("pumps", column => {
     column.increments();
-    column.integer("org_admin")
+    column.integer("org_id")
     .unsigned()
-    .notNullable()
     .references("id")
-    .inTable("org_id")
+    .inTable("organizations")
     .onDelete("CASCADE")
     .onUpdate("CASCADE");
     column.integer("sensor_pid");

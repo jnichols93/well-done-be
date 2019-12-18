@@ -5,7 +5,6 @@ exports.up = function(knex) {
     column.string("headquarter_city");
     column.integer("org_admin")
     .unsigned()
-    .notNullable()
     .references("id")
     .inTable("accounts")
     .onDelete("CASCADE")
