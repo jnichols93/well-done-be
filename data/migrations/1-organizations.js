@@ -10,8 +10,19 @@ exports.up = function(knex) {
     .inTable("accounts")
     .onDelete("CASCADE")
     .onUpdate("CASCADE");
-    column.string("org_users");
-    column.string("pumps_owned");
+    column.integer("org_users")
+    .unsigned()
+    .references("id")
+    .inTable("accounts")
+    .onDelete("CASCADE")
+    .onUpdate("CASCADE");
+    column.integer("pumps_owned")
+    .unsigned()
+    .references("id")
+    .inTable("pumps")
+    .onDelete("CASCADE")
+    .onUpdate("CASCADE");
+    ;
   });
 };
 
