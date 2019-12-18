@@ -3,6 +3,7 @@ exports.up = function(knex) {
     column.increments();
     column.string("org_name");
     column.string("headquarter_city");
+    column.string("origin_country");
     column.integer("org_admin")
     .unsigned()
     .references("id")

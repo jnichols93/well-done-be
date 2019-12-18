@@ -4,7 +4,7 @@ const Organizations = require("./organizations.model");
 const { validateOrg, validateOrgUpdate } = require("../middleware/middleware");
 
 // GET to /api/orgs
-router.get("/", authenticate, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const orgs = await Organizations.findAll();
     res.status(200).json(orgs);
@@ -32,7 +32,7 @@ router.get("/:id", authenticate, (req, res) => {
 });
 
 // POST to api/orgs
-router.post("/", authenticate, validateOrg, async (req, res) => {
+router.post("/", validateOrg, async (req, res) => {
   try {
     const org = req.body;
     console.log("org", org);
