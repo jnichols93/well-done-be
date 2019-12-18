@@ -12,7 +12,8 @@ function findAllAndData() {
   return db("organizations as o")
     .join("accounts as a", "a.id", "o.org_id")
     .join("pumps as p", "o.id", "p.org_id")
-    .join("sensors as s", "o.id", "s.org_id");
+    .join("sensors as s", "o.id", "s.org_id")
+    .join("");
 }
 
 function findByOrgName(org_name) {
