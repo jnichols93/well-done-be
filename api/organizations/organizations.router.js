@@ -15,14 +15,16 @@ router.get("/", async (req, res) => {
   }
 });
 // GET /api/orgs/{}/info
-router.get("/:org_id/pumps", async (req, res) => {
-    
-  const [pumps] = await Organizations.getPumpsById(req.params.org_id)
-  res
-
-  if (err) res.status(500).json(err)
-  else if (err || isEmptyObj(pumps)) res.status(404).json({ error: "There are no pumps associated with this id"})
-  else res.status(200).json(pumps)
+router.get("/pumps/:id", async (req, res) => {
+  const {id} = req.params;
+  Organizations.getPumpsByOrgId(id)
+  .then(pumps=>{
+    console.log("pumps", pumps);
+    res.status(200).json(pumps);
+  })
+  .catch(err =>{
+    res.status(500).json({ message: "no pumps for u"})
+  })
 })
 
 // GET to /api/orgs/1

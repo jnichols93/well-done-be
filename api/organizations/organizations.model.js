@@ -11,7 +11,7 @@ function findAll() {
 function findAllAndData() {
   return db("accounts as a",)
     .join("organizations as o","a.org_id","o.id",)
-    .where("a.org_id","=", "o.id")
+    .where("a.org_id","=", "o.id");
 }
 //get pumps by org id
 // function getPumpsByOrgId(org_id){
@@ -20,10 +20,38 @@ function findAllAndData() {
 //     .where("p.org_id", "=", "o.id");
 // }
 
-function getPumpsById(org_id) {
-  return db("pumps")
-     .join("organizations", "organizations.id", "pumps.org_id", )
-     .where("pumps.org_id", "=", "organization_id")
+function getPumpsByOrgId(id) {
+  return db("pumps as p")
+    .join("organizations as o", "o.id", "p.org_id")
+    .join("sensors as s", "s.physical_id", "p.sensor_pid")
+    .where({ org_id:id })
+    .select([
+      "s.id as sensor_index",
+      "s.physical_id",
+      "s.kind",
+      "s.type",
+      "s.cellular",
+      "s.bluetooth",
+      "s.training",
+      "s.remark",
+      "s.data_finished",
+      "s.depth",
+      "s.yield",
+      "s.static",
+      "s.quality",
+      "p.id as pump_index",
+      "p.sensor_pid",
+      "p.org_id",
+      "o.org_name",
+      "o.headquarter_city",
+      "p.country_name as village_name",
+      "p.district_name",
+      "p.province_name",
+      "p.commune_name",
+      "p.latitude",
+      "p.longitude",
+    ])
+    
 }
 //get users by org id
 function getUsersByOrg(org_id){

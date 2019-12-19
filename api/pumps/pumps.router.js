@@ -73,7 +73,7 @@ router.delete("/:id", authenticate, (req, res) => {
 });
 
 //GET to /api/pumps/org/2
-router.get("/org/:id", authenticate, (req, res) => {
+router.get("/org/:id", (req, res) => {
   const { id } = req.params;
   Pumps.getPumpsByOrgId(id)
     .then(pumps => {
