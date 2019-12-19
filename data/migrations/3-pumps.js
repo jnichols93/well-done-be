@@ -2,7 +2,6 @@ exports.up = function(knex) {
   return knex.schema.createTable("pumps", column => {
     column.increments();
     column.integer("org_id")
-    .unsigned()
     .references("id")
     .inTable("organizations")
     .onDelete("CASCADE")

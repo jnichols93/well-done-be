@@ -4,9 +4,9 @@ exports.up = function(knex) {
     column.string("org_name");
     column.string("headquarter_city");
     column.string("origin_country");
-    column.integer("org_admin");
+    column.string("org_admin");
     column.integer("org_users")
-      .references("accounts.id")
+      .references("id")
       .inTable("accounts")
       .onDelete("RESTRICT")
       .onUpdate("RESTRICT");
