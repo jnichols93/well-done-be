@@ -6,7 +6,7 @@ const db = require("../../data/dbConfig.js");
 const find = () => {
   try {
     return db("accounts")
-    .select(["id", "first_name", "last_name", "email_address", "mobile_number", "super_user", "org_user", "org_admin"])
+    .select(["id", "org_id", "first_name", "last_name", "email_address", "mobile_number", "role"])
   } catch (err) {
     console.log(err.message);
   }
@@ -27,7 +27,7 @@ function findBy(filter) {
 const findById = id => {
   try {
     return db("accounts")
-      .select(["id", "first_name", "last_name", "email_address", "mobile_number", "super_user", "org_user", "org_admin"])
+      .select(["id", "first_name", "last_name", "email_address", "mobile_number", "role"])
       .where({ id })
       .first();
   } catch (err) {

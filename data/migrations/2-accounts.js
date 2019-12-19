@@ -4,7 +4,7 @@ exports.up = function(knex) {
     column
       .integer("org_id")
       .unsigned()
-      .references("id")
+      .references("organizations.id")
       .inTable("organizations")
       .onDelete("RESTRICT")
       .onUpdate("RESTRICT");
@@ -21,11 +21,10 @@ exports.up = function(knex) {
     column
     .string("mobile_number");
     column
-    .boolean("super_user").notNullable();
+    .string("role").notNullable();
     column
-    .boolean("org_user").notNullable();
-    column
-    .boolean("org_admin").notNullable();
+    .timestamp('created_at').defaultTo(knex.fn.now)
+
   });
 };
 
