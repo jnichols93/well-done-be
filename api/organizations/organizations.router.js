@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 });
 
 // GET to /api/orgs/1
-router.get("/:id", authenticate, (req, res) => {
+router.get("/:id", (req, res) => {
   const { id } = req.params;
   Organizations.findById(id)
     .then(org => {

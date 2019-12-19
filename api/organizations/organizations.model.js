@@ -10,11 +10,27 @@ function findAll() {
 
 function findAllAndData() {
   return db("organizations as o")
-    .join("accounts as a", "a.id", "o.org_id")
-    .join("pumps as p", "o.id", "p.org_id")
-    .join("sensors as s", "o.id", "s.org_id")
-    .join("");
+    .join("accounts as a","a.org_id","o.id")
+    .where("a.org_id","=", "o.id")
+    
+ 
 }
+//get pumps by org id
+function getPumpsByOrgId(org_id){
+    return db("pumps as p")
+    .join("organizations as o", "o.id", "p.org_id")
+    .where("p.org_id", "=", "o.id");
+}
+
+//get users by org id
+function getUsersByOrg(org_id){
+  return db("accounts as a")
+  .join("organizations as o", "o.id","a.org_id")
+  .where("a.org_id","=", "o.id")
+  .and("a.role","=","org_user");
+}
+
+
 
 function findByOrgName(org_name) {
   return db("organizations as o")

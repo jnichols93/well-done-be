@@ -7,7 +7,7 @@ const { validateAccount, validateUpdate } = require("../middleware/middleware");
 
 // GET to /api/accounts
 // ! supposed to be only for superusers
-router.get("/", authenticate, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const accounts = await Accounts.find();
     res.status(200).json(accounts);
