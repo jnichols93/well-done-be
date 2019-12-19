@@ -20,12 +20,14 @@ function findAllAndData() {
 //     .where("p.org_id", "=", "o.id");
 // }
 
-function getPumpsByOrgId(id) {
-  return db("pumps as p")
-    .join("organizations as o", "o.id", "p.org_id")
+function getInfoByOrgId(id) {
+  return db("organizations  as o")
+    .join("pumps as p", "p.org_id", "o.id")
+    .join("accounts as a","a.org_id","o.id" )
     .join("sensors as s", "s.physical_id", "p.sensor_pid")
     .where({ org_id:id })
     .select([
+      "a.id",
       "s.id as sensor_index",
       "s.physical_id",
       "s.kind",

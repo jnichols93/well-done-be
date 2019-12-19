@@ -2,8 +2,7 @@ const router = require("express").Router();
 const { authenticate } = require("../middleware/middleware");
 const Organizations = require("./organizations.model");
 const { validateOrg, validateOrgUpdate } = require("../middleware/middleware");
-const isEmptyObj = require("../utils/isEmptyObj");
-const withCatch = require("../utils/withCatch");
+
 // GET to /api/orgs
 router.get("/", async (req, res) => {
   try {
@@ -14,18 +13,17 @@ router.get("/", async (req, res) => {
     res.status(400).json(err.message);
   }
 });
-// GET /api/orgs/{}/info
-router.get("/pumps/:id", async (req, res) => {
-  const {id} = req.params;
-  Organizations.getPumpsByOrgId(id)
+// GET /api/orgs/{org_id}/pumps
+router.get("/:id/pumps", async (req, res) => {
+  const {id} = await Organizations.getInfoByOrgId(id)
   .then(pumps=>{
-    console.log("pumps", pumps);
+    console.log("pumps",pumps);
     res.status(200).json(pumps);
   })
   .catch(err =>{
     res.status(500).json({ message: "no pumps for u"})
   })
-})
+});
 
 // GET to /api/orgs/1
 router.get("/:id", (req, res) => {
