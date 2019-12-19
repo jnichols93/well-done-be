@@ -4,12 +4,6 @@ exports.up = function(knex) {
     column.string("org_name");
     column.string("headquarter_city");
     column.string("origin_country");
-    column.string("org_admin");
-    column.integer("org_users")
-      .references("id")
-      .inTable("accounts")
-      .onDelete("RESTRICT")
-      .onUpdate("RESTRICT");
   });
 };
 

@@ -9,19 +9,22 @@ function findAll() {
 }
 
 function findAllAndData() {
-  return db("organizations as o")
-    .join("accounts as a","a.org_id","o.id")
+  return db("accounts as a",)
+    .join("organizations as o","a.org_id","o.id",)
     .where("a.org_id","=", "o.id")
-    
- 
 }
 //get pumps by org id
-function getPumpsByOrgId(org_id){
-    return db("pumps as p")
-    .join("organizations as o", "o.id", "p.org_id")
-    .where("p.org_id", "=", "o.id");
-}
+// function getPumpsByOrgId(org_id){
+//     return db("pumps as p")
+//     .join("organizations as o", "o.id", "p.org_id")
+//     .where("p.org_id", "=", "o.id");
+// }
 
+function getPumpsById(org_id) {
+  return db("pumps")
+     .join("organizations", "organizations.id", "pumps.org_id", )
+     .where("pumps.org_id", "=", "organization_id")
+}
 //get users by org id
 function getUsersByOrg(org_id){
   return db("accounts as a")
