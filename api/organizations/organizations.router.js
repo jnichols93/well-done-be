@@ -13,12 +13,12 @@ router.get("/", async (req, res) => {
     res.status(400).json(err.message);
   }
 });
-// GET /api/orgs/{org_id}/pumps
-router.get("/:id/pumps", async (req, res) => {
+// GET /api/orgs/{org_id}/pumps/ users
+router.get("/info/:id", async (req, res) => {
   const {id} = await Organizations.getInfoByOrgId(id)
-  .then(pumps=>{
-    console.log("pumps",pumps);
-    res.status(200).json(pumps);
+  .then(info=>{
+    console.log("info",info);
+    res.status(200).json(info);
   })
   .catch(err =>{
     res.status(500).json({ message: "no pumps for u"})

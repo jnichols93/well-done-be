@@ -20,7 +20,7 @@ function findAllAndData() {
 //     .where("p.org_id", "=", "o.id");
 // }
 
-function getInfoByOrgId(id) {
+function getInfoByOrgId() {
   return db("organizations  as o")
     .join("pumps as p", "p.org_id", "o.id")
     .join("accounts as a","a.org_id","o.id" )
@@ -52,7 +52,7 @@ function getInfoByOrgId(id) {
       "p.commune_name",
       "p.latitude",
       "p.longitude",
-    ])
+    ]);
     
 }
 //get users by org id
